@@ -1,0 +1,10 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Dependencies (none required — this is a zero-build static site)
+node_modules/
+
+# Local server cache
+.cache/

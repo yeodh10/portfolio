@@ -8,3 +8,6 @@ node_modules/
 
 # Local server cache
 .cache/
+
+# Local image build scripts (Pillow / Windows) — generated assets are committed
+_*.py

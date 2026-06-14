@@ -1,0 +1,156 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <defs>
+    <!-- Dark background gradient -->
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0c10"/>
+      <stop offset="100%" stop-color="#10111a"/>
+    </linearGradient>
+
+    <!-- Radial glow top-left -->
+    <radialGradient id="glow-tl" cx="0%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#6c8cff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0b0c10" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Radial glow bottom-right -->
+    <radialGradient id="glow-br" cx="100%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#34e0d8" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#0b0c10" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Accent gradient for title text -->
+    <linearGradient id="accent-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6c8cff"/>
+      <stop offset="100%" stop-color="#34e0d8"/>
+    </linearGradient>
+
+    <!-- Accent gradient for decorative shapes -->
+    <linearGradient id="shape-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c8cff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#34e0d8" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <!-- Subtle stroke gradient for whiteboard lines -->
+    <linearGradient id="line-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6c8cff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#34e0d8" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- === Background === -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+  <!-- Glow overlays -->
+  <rect width="1200" height="630" fill="url(#glow-tl)"/>
+  <rect width="1200" height="630" fill="url(#glow-br)"/>
+
+  <!-- === Decorative shapes (whiteboard metaphor) === -->
+
+  <!-- Large translucent circle, top-right -->
+  <circle cx="1050" cy="130" r="180" fill="url(#shape-grad)" opacity="0.18"/>
+
+  <!-- Medium circle, left side -->
+  <circle cx="90" cy="480" r="120" fill="#6c8cff" opacity="0.09"/>
+
+  <!-- Whiteboard rectangle suggestion, mid-right -->
+  <rect x="780" y="180" width="340" height="220" rx="18" ry="18"
+        fill="none" stroke="url(#shape-grad)" stroke-width="2" opacity="0.38"/>
+
+  <!-- Small accent circle inside whiteboard rect -->
+  <circle cx="900" cy="290" r="50" fill="#34e0d8" opacity="0.08"/>
+
+  <!-- Horizontal accent line (whiteboard rule) -->
+  <line x1="780" y1="250" x2="1120" y2="250"
+        stroke="url(#line-grad)" stroke-width="1.5" opacity="0.45"/>
+
+  <!-- Diagonal accent lines (canvas feel) -->
+  <line x1="820" y1="180" x2="780" y2="400"
+        stroke="#6c8cff" stroke-width="1" opacity="0.2"/>
+  <line x1="1120" y1="180" x2="1120" y2="400"
+        stroke="#34e0d8" stroke-width="1" opacity="0.2"/>
+
+  <!-- Tiny dots cluster -->
+  <circle cx="840" cy="330" r="4" fill="#6c8cff" opacity="0.5"/>
+  <circle cx="870" cy="330" r="4" fill="#6c8cff" opacity="0.4"/>
+  <circle cx="900" cy="330" r="4" fill="#34e0d8" opacity="0.5"/>
+  <circle cx="930" cy="330" r="4" fill="#34e0d8" opacity="0.4"/>
+
+  <!-- Bottom accent bar -->
+  <rect x="80" y="560" width="200" height="3" rx="2"
+        fill="url(#accent-grad)" opacity="0.7"/>
+
+  <!-- === Left content column === -->
+
+  <!-- Eyebrow label -->
+  <text x="80" y="122"
+        font-family="'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif"
+        font-size="22" font-weight="400" letter-spacing="3"
+        fill="#9daeff" opacity="0.85">업무 총괄 · 포트폴리오</text>
+
+  <!-- Accent divider line -->
+  <line x1="80" y1="140" x2="320" y2="140"
+        stroke="url(#accent-grad)" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Main title line 1 -->
+  <text x="80" y="238"
+        font-family="'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif"
+        font-size="72" font-weight="700" letter-spacing="-1"
+        fill="url(#accent-grad)">실시간 협업 웹앱부터</text>
+
+  <!-- Main title line 2 -->
+  <text x="80" y="328"
+        font-family="'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif"
+        font-size="72" font-weight="700" letter-spacing="-1"
+        fill="url(#accent-grad)">AI 영업 에이전트까지</text>
+
+  <!-- Horizontal separator -->
+  <line x1="80" y1="360" x2="440" y2="360"
+        stroke="#ffffff" stroke-width="1" opacity="0.12"/>
+
+  <!-- Name -->
+  <text x="80" y="410"
+        font-family="'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif"
+        font-size="30" font-weight="600"
+        fill="#ffffff" opacity="0.95">여동환</text>
+
+  <!-- Sub-title / role -->
+  <text x="80" y="450"
+        font-family="'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif"
+        font-size="24" font-weight="400"
+        fill="#c5cfff" opacity="0.78">풀스택 &amp; AI 에이전트 개발자</text>
+
+  <!-- Tech stack tags -->
+  <!-- Tag: React -->
+  <rect x="80" y="480" width="90" height="34" rx="8"
+        fill="#6c8cff" fill-opacity="0.15" stroke="#6c8cff" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="125" y="502" text-anchor="middle"
+        font-family="'Malgun Gothic', system-ui, sans-serif"
+        font-size="16" fill="#9daeff">React</text>
+
+  <!-- Tag: Node.js -->
+  <rect x="182" y="480" width="100" height="34" rx="8"
+        fill="#6c8cff" fill-opacity="0.15" stroke="#6c8cff" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="232" y="502" text-anchor="middle"
+        font-family="'Malgun Gothic', system-ui, sans-serif"
+        font-size="16" fill="#9daeff">Node.js</text>
+
+  <!-- Tag: Claude API -->
+  <rect x="294" y="480" width="130" height="34" rx="8"
+        fill="#34e0d8" fill-opacity="0.1" stroke="#34e0d8" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="359" y="502" text-anchor="middle"
+        font-family="'Malgun Gothic', system-ui, sans-serif"
+        font-size="16" fill="#7ef5ef">Claude API</text>
+
+  <!-- Tag: Python -->
+  <rect x="436" y="480" width="96" height="34" rx="8"
+        fill="#34e0d8" fill-opacity="0.1" stroke="#34e0d8" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="484" y="502" text-anchor="middle"
+        font-family="'Malgun Gothic', system-ui, sans-serif"
+        font-size="16" fill="#7ef5ef">Python</text>
+
+  <!-- === Bottom-right: GitHub handle === -->
+  <text x="1120" y="598" text-anchor="end"
+        font-family="'Malgun Gothic', 'Courier New', monospace, system-ui, sans-serif"
+        font-size="18" font-weight="400"
+        fill="#ffffff" opacity="0.40">github.com/yeodh10</text>
+
+</svg>

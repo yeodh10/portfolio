@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yeodh10.github.io/sitemap.xml

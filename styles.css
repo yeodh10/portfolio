@@ -72,7 +72,7 @@
   --header-h: 64px;
 
   /* --- Typography --- */
-  --font-sans: 'Pretendard', system-ui, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  --font-sans: 'Pretendard Variable', 'Pretendard', system-ui, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, 'Cascadia Code', Consolas, monospace;
 
   /* Fluid type scale (clamp: min, preferred, max) */
@@ -136,7 +136,6 @@ body {
   background-image:
     radial-gradient(60rem 40rem at 80% -10%, rgba(108, 140, 255, 0.10), transparent 60%),
     radial-gradient(50rem 36rem at -10% 0%, rgba(52, 224, 216, 0.07), transparent 55%);
-  background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -486,7 +485,7 @@ p {
 
 .stat-label {
   font-size: var(--fs-sm);
-  color: var(--text-dim);
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -495,10 +494,6 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-5) var(--space-7);
-}
-
-.stat-row .stat + .stat {
-  position: relative;
 }
 
 /* -----------------------------------------------------------------------------
@@ -515,7 +510,6 @@ p {
   background: transparent;
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
-              backdrop-filter var(--dur) var(--ease),
               box-shadow var(--dur) var(--ease);
 }
 
@@ -526,6 +520,20 @@ p {
   backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--border-strong);
   box-shadow: var(--shadow-sm);
+}
+
+/* 상단 스크롤 진행 바 — 헤더 하단 가장자리. JS가 width를 scaleX(--scroll-progress)로 갱신 */
+#scroll-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left center;
+  background: var(--gradient);
+  z-index: 1;
+  transition: transform var(--dur-fast) var(--ease);
 }
 
 .header-inner {
@@ -996,7 +1004,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 /* feature bullets */
@@ -1062,6 +1070,95 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+/* -----------------------------------------------------------------------------
+   14b. Journey (#journey) — Phase 타임라인
+   -------------------------------------------------------------------------- */
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.journey-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.journey-group-title {
+  font-size: var(--fs-lg);
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+/* 세로 타임라인: 좌측 연결선(::before) + 단계별 그라디언트 마커 */
+.phase-timeline {
+  display: grid;
+  gap: var(--space-4);
+  position: relative;
+  margin: 0;
+  padding-left: var(--space-2);
+}
+
+.phase-item {
+  position: relative;
+  padding-left: var(--space-7);
+  min-height: 1.5rem;
+}
+
+/* 항목 사이를 잇는 세로선 (마지막 항목 제외) */
+.phase-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 30px;
+  bottom: calc(-1 * var(--space-4));
+  width: 2px;
+  background: var(--border-strong);
+}
+
+/* 원형 Phase 번호 마커 — .feature-list / 기존 그라디언트 토큰 패턴 재사용 */
+.phase-no {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  z-index: 1;
+}
+
+.phase-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.phase-desc {
+  margin-top: var(--space-1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: var(--lh-snug);
+}
+
+.phase-desc code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--accent-2);
+  background: var(--surface-3);
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
 }
 
 /* -----------------------------------------------------------------------------
@@ -1132,6 +1229,20 @@ p {
   transform: translateY(-2px);
   border-color: var(--accent);
   background: var(--surface-3);
+}
+
+/* 비활성 링크/버튼: 시각·포인터 비활성화 (키보드 배제는 HTML tabindex="-1"로 처리).
+   일반 셀렉터로 두어 향후 '비공개 저장소' 등 다른 비활성 요소에도 재사용 */
+[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 이메일 복사 완료 피드백 (JS가 .is-copied 토글) */
+.contact-link.is-copied {
+  color: var(--accent-2);
+  border-color: var(--accent);
 }
 
 /* -----------------------------------------------------------------------------
@@ -1262,6 +1373,12 @@ p {
 
   .projects-grid {
     gap: var(--space-6);
+  }
+
+  .journey-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    align-items: start;
   }
 }
 

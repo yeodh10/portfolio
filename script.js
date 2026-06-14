@@ -54,12 +54,10 @@
     link.addEventListener('click', closeNav);
   });
 
-  // Close on Escape, and when resized up to desktop.
+  // Close on Escape. (Resize-up-to-desktop close is handled inside the
+  // rAF-throttled scroll/resize handler below to avoid layout thrashing.)
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeNav();
-  });
-  window.addEventListener('resize', function () {
-    if (window.innerWidth >= 768) closeNav();
   });
 
   /* ---------------------------------------------------------------------------
@@ -98,6 +96,23 @@
   }
 
   /* ---------------------------------------------------------------------------
+     3b. Top scroll-progress bar (#scroll-progress)
+         Sets --scroll-progress (0..1) used by CSS scaleX. Width updates run
+         even under prefers-reduced-motion (only the CSS transition is dropped).
+     ------------------------------------------------------------------------ */
+  var scrollProgress = document.getElementById('scroll-progress');
+
+  function updateScrollProgress() {
+    if (!scrollProgress) return;
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    if (ratio < 0) ratio = 0;
+    if (ratio > 1) ratio = 1;
+    scrollProgress.style.setProperty('--scroll-progress', ratio.toFixed(4));
+  }
+
+  /* ---------------------------------------------------------------------------
      4. Smooth anchor scroll with sticky-header offset
      ------------------------------------------------------------------------ */
   function headerHeight() {
@@ -131,8 +146,19 @@
       });
 
       // Move focus for accessibility without re-triggering jump.
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
+      // #main-content carries a static tabindex="-1"; for other targets we
+      // add it temporarily and clean up on blur so sections don't linger in
+      // the tab order.
+      if (target.id === 'main-content') {
+        target.focus({ preventScroll: true });
+      } else {
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', function cleanup() {
+          target.removeAttribute('tabindex');
+          target.removeEventListener('blur', cleanup);
+        });
+      }
     });
   });
 
@@ -150,7 +176,13 @@
 
   function setActiveLink(activeLink) {
     navLinks.forEach(function (link) {
-      link.classList.toggle('active', link === activeLink);
+      var isActive = link === activeLink;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -185,8 +217,11 @@
     if (ticking) return;
     ticking = true;
     window.requestAnimationFrame(function () {
+      // Consolidated here so resize-driven layout reads happen once per frame.
+      if (window.innerWidth >= 768) closeNav();
       updateHeaderScrolled();
       updateToTop();
+      updateScrollProgress();
       updateScrollSpy();
       ticking = false;
     });
@@ -196,6 +231,7 @@
   window.addEventListener('resize', onScroll, { passive: true });
   updateHeaderScrolled();
   updateToTop();
+  updateScrollProgress();
   updateScrollSpy();
 
   /* ---------------------------------------------------------------------------
@@ -292,6 +328,58 @@
         countObserver.observe(el);
       });
     }
+  }
+
+  /* ---------------------------------------------------------------------------
+     7b. Copy email to clipboard (#copy-email)
+         mailto is a placeholder, so offer a copy affordance. Falls back
+         gracefully (legacy execCommand, then no-op) if Clipboard API is absent.
+     ------------------------------------------------------------------------ */
+  var copyEmailBtn = document.getElementById('copy-email');
+  if (copyEmailBtn) {
+    var copyResetTimer = null;
+    var copyDefaultLabel = copyEmailBtn.textContent;
+
+    function showCopyFeedback(ok) {
+      copyEmailBtn.textContent = ok ? '복사됨' : '복사 실패';
+      copyEmailBtn.classList.toggle('is-copied', ok);
+      if (copyResetTimer) window.clearTimeout(copyResetTimer);
+      copyResetTimer = window.setTimeout(function () {
+        copyEmailBtn.textContent = copyDefaultLabel;
+        copyEmailBtn.classList.remove('is-copied');
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    copyEmailBtn.addEventListener('click', function () {
+      var text = copyEmailBtn.getAttribute('data-copy') || '';
+      if (!text) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { showCopyFeedback(true); },
+          function () { showCopyFeedback(legacyCopy(text)); }
+        );
+      } else {
+        showCopyFeedback(legacyCopy(text));
+      }
+    });
   }
 
   /* ---------------------------------------------------------------------------

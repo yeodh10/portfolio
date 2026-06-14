@@ -16,26 +16,64 @@
   <meta property="og:title" content="[이름] · 풀스택 & AI 에이전트 개발자 포트폴리오" />
   <meta property="og:description" content="실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 개발자 [이름]의 업무 총괄 포트폴리오." />
   <meta property="og:site_name" content="[이름] 포트폴리오" />
-  <!-- TODO: 여기 수정 — 배포 후 실제 포트폴리오 URL로 교체하세요 (예: https://yeodh10.github.io/) -->
+  <!-- TODO: 여기 수정 — 배포 후 실제 포트폴리오 URL로 교체하세요. og:url / canonical / og:image / twitter:image / robots.txt / sitemap.xml 의 도메인을 함께 갱신하세요 (예: https://yeodh10.github.io/) -->
   <meta property="og:url" content="https://yeodh10.github.io/" />
-  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://yeodh10.github.io/" />
+  <meta property="og:image" content="https://yeodh10.github.io/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="[이름] · 풀스택 & AI 에이전트 개발자 포트폴리오 미리보기" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="[이름] · 풀스택 & AI 에이전트 개발자 포트폴리오" />
   <meta name="twitter:description" content="실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 개발자 [이름]의 업무 총괄 포트폴리오." />
+  <meta name="twitter:image" content="https://yeodh10.github.io/og-image.png" />
 
   <!-- Dark-tone inline SVG favicon (data URI) -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%236c8cff'/%3E%3Cstop%20offset='1'%20stop-color='%2334e0d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%230b0c10'/%3E%3Ctext%20x='16'%20y='22'%20font-family='Pretendard,system-ui,sans-serif'%20font-size='18'%20font-weight='800'%20text-anchor='middle'%20fill='url(%23g)'%3EP%3C/text%3E%3C/svg%3E" />
 
-  <!-- Pretendard webfont -->
+  <!-- Apple touch icon (180x180, 동일 브랜드: BG #0b0c10, 인디고→시안 'P') -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Pretendard webfont — variable + dynamic-subset (unicode-range 청크로 실제 글자만 woff2 요청) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
   <!-- Design system -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD 구조화 데이터 (schema.org Person) -->
+  <!-- TODO: 여기 수정 — name/jobTitle 을 실제 값으로, url 을 배포 도메인으로 교체하세요 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "[이름]",
+    "jobTitle": "[직함] · 풀스택 & AI 에이전트 개발자",
+    "url": "https://yeodh10.github.io/",
+    "sameAs": ["https://github.com/yeodh10"],
+    "knowsAbout": [
+      "React",
+      "Socket.IO",
+      "WebSocket 실시간 동기화",
+      "Node.js",
+      "Anthropic Claude API",
+      "Claude Tool Use",
+      "Python",
+      "Streamlit",
+      "SQLite",
+      "AI 에이전트 설계",
+      "풀스택 웹 개발"
+    ],
+    "description": "실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 풀스택 & AI 에이전트 개발자입니다."
+  }
+  </script>
 </head>
 <body>
-  <a class="skip-link" href="#home">본문 바로가기</a>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <header class="site-header" id="site-header">
+    <div id="scroll-progress" aria-hidden="true"></div>
     <div class="header-inner">
       <!-- TODO: 여기 수정 — 브랜드 이름 교체 -->
       <a class="brand" href="#home">
@@ -56,13 +94,14 @@
           <li><a class="nav-link" href="#about">소개</a></li>
           <li><a class="nav-link" href="#skills">기술</a></li>
           <li><a class="nav-link" href="#projects">프로젝트</a></li>
+          <li><a class="nav-link" href="#journey">여정</a></li>
           <li><a class="nav-link" href="#contact">연락처</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- =====================================================================
          Hero (#home)
          ================================================================== -->
@@ -99,6 +138,10 @@
           <div class="stat">
             <span class="stat-num" data-count="2966" data-prefix="약 " data-suffix="+">0</span>
             <span class="stat-label">소스 코드 라인 수</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="14">0</span>
+            <span class="stat-label">개발 Phase</span>
           </div>
           <div class="stat">
             <span class="stat-num">풀스택 · AI</span>
@@ -318,6 +361,7 @@
                 <li>URL 기반 방(room) 격리로 독립 세션 운영</li>
                 <li>신규 접속 시 canvas:sync 스냅샷으로 전체 상태 일관성 보장</li>
                 <li>node:sqlite 영속화 — 서버 재시작 후 캔버스 복원</li>
+                <li>동시 편집 충돌 처리 — liveMove(드래그 중 전파)·dragEnd(확정) 분리, last-write-wins 전략</li>
                 <li>실시간 커서 추적 (40ms 스로틀) + 접속자 presence + 색상 자동 배정</li>
                 <li>자동 재연결 및 끊김 상태 배너</li>
                 <li>다크 테마 UI</li>
@@ -356,8 +400,8 @@
                 <span class="badge">스냅샷 동기화(canvas:sync)</span>
                 <span class="badge">메모리+SQLite 영속화</span>
               </div>
-              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10" target="_blank" rel="noopener">
-                GitHub에서 보기
+              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">
+                GitHub에서 보기<span class="sr-only">(새 탭에서 열림)</span>
               </a>
             </footer>
           </article>
@@ -415,6 +459,8 @@
               <strong>아키텍처 하이라이트.</strong>
               Claude Tool Use 에이전트 패턴으로 분류·매칭을 수행하고, 공공 OpenAPI 통합 시 31일 기간 제한을 자동 분할 처리합니다.
               결정론적 스코어링과 AI를 결합하되, AI가 생성한 결과는 사람이 최종 검수하는 구조로 자동 입찰은 수행하지 않습니다.
+              <br />
+              <code>점수 = 적합도(0–49) + 카테고리 가중치(4–20) + 마감 임박도(0–30)</code>
             </p>
 
             <footer class="project-foot">
@@ -425,10 +471,135 @@
                 <span class="badge">결정론적 스코어링 + AI 결합</span>
                 <span class="badge">AI 안전 설계(사람 최종 검수)</span>
               </div>
-              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10" target="_blank" rel="noopener">
-                GitHub에서 보기
+              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">
+                GitHub에서 보기<span class="sr-only">(새 탭에서 열림)</span>
               </a>
             </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Journey (#journey) — Phase 단위 점진 개발 타임라인
+         ================================================================== -->
+    <section class="section" id="journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">개발 여정</p>
+          <h2 class="section-title">개발 여정</h2>
+          <p class="section-subtitle">두 프로젝트 모두 Phase 단위로 기능을 분리해 점진적으로 설계하고 커밋하며 완성했습니다. 각 Phase는 독립적으로 동작·검증 가능한 단위입니다.</p>
+        </div>
+
+        <div class="journey-grid">
+          <article class="card journey-group reveal">
+            <h3 class="journey-group-title">실시간 협업 화이트보드</h3>
+            <ol class="phase-timeline">
+              <li class="phase-item">
+                <span class="phase-no">1</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">캔버스 기반 · 도형 그리기</h4>
+                  <p class="phase-desc">Konva 캔버스 위에서 사각형·원 도형을 그리는 기본 구조를 구축했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">2</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">실시간 도형 추가 동기화 + 다크 테마</h4>
+                  <p class="phase-desc"><code>shape:add</code> 이벤트로 도형 추가를 모든 참여자에게 실시간 전파하고 다크 테마를 적용했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">3</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">이동 · 삭제 동기화</h4>
+                  <p class="phase-desc"><code>shape:update</code>·<code>shape:delete</code> 이벤트로 도형 이동과 삭제까지 동기화 범위를 확장했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">4</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">방(room) 격리 + 신규 접속 스냅샷 동기화</h4>
+                  <p class="phase-desc">URL 기반 방 단위로 세션을 격리하고, 신규 접속자에게 <code>canvas:sync</code> 스냅샷으로 전체 상태를 전달합니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">5</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">SQLite 상태 저장</h4>
+                  <p class="phase-desc"><code>node:sqlite</code>로 캔버스 상태를 영속화해 서버 재시작 후에도 데이터가 복원됩니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">6</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">실시간 커서 + 접속자(presence) + 재연결</h4>
+                  <p class="phase-desc">참여자 커서와 presence를 실시간 공유하고, 자동 재연결과 끊김 상태 배너를 추가했습니다.</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <article class="card journey-group reveal delay-1">
+            <h3 class="journey-group-title">공공기관 보안 영업 코파일럿 에이전트</h3>
+            <ol class="phase-timeline">
+              <li class="phase-item">
+                <span class="phase-no">0</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">프로젝트 셋업 · API 키 관리</h4>
+                  <p class="phase-desc">venv, Anthropic SDK, <code>.env</code> 기반 키 관리와 Claude 호출 테스트로 기반을 마련했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">1</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">나라장터 공고 수집</h4>
+                  <p class="phase-desc">나라장터 OpenAPI로 입찰공고를 수집·파싱하는 파이프라인을 구축했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">2</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">보안 분류 (Claude)</h4>
+                  <p class="phase-desc">Claude로 보안/비보안 여부와 카테고리를 자동 분류합니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">3</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">제품 매칭</h4>
+                  <p class="phase-desc">분류된 공고를 내부 제품 카탈로그와 매칭하고 근거를 제시합니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">4</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">에이전트 (Tool Use)</h4>
+                  <p class="phase-desc">Claude Tool Use 패턴으로 분류·매칭을 수행하는 에이전트를 구성했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">5</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">영업 토킹포인트 생성 + 우선순위 스코어링</h4>
+                  <p class="phase-desc">고객 요구→강점→차별점 토킹포인트를 생성하고, 적합도·카테고리 가중·마감 임박도로 결정론적 우선순위를 산정합니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">6</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">Streamlit 대시보드</h4>
+                  <p class="phase-desc">필터·검색·CSV 내보내기를 갖춘 Streamlit 대시보드와 무료 경로 실행 모드를 구축했습니다.</p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <span class="phase-no">7</span>
+                <div class="phase-body">
+                  <h4 class="phase-title">RFP PDF 분석 · 일일 브리핑 자동화</h4>
+                  <p class="phase-desc">RFP PDF에서 요구사항을 추출하고, 중복 제거된 신규 보안공고 일일 브리핑을 스케줄러로 자동화했습니다.</p>
+                </div>
+              </li>
+            </ol>
           </article>
         </div>
       </div>
@@ -445,9 +616,10 @@
           <p class="contact-lead">제안, 협업, 채용 문의를 환영합니다.</p>
           <p class="section-subtitle">아래 연락 수단으로 언제든지 메시지를 남겨 주시면 확인 후 답변드리겠습니다.</p>
           <div class="contact-methods">
-            <!-- TODO: 여기 수정 — 실제 이메일로 교체. 교체 전까지 aria-disabled="true" 유지 -->
-            <a class="contact-link" href="mailto:[your.email@example.com]" aria-disabled="true">이메일 보내기</a>
-            <a class="contact-link" href="https://github.com/yeodh10" target="_blank" rel="noopener">GitHub</a>
+            <!-- TODO: 여기 수정 — 실제 이메일로 교체. 교체 시 mailto 링크의 aria-disabled/tabindex 를 제거하고, 복사 버튼 data-copy 값을 실제 이메일로 갱신하세요 -->
+            <a class="contact-link" href="mailto:[your.email@example.com]" aria-disabled="true" tabindex="-1">이메일 보내기</a>
+            <button class="contact-link" type="button" id="copy-email" data-copy="[your.email@example.com]" aria-label="이메일 주소 복사">이메일 복사</button>
+            <a class="contact-link" href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only">(새 탭에서 열림)</span></a>
           </div>
         </div>
       </div>
@@ -460,7 +632,7 @@
       <p class="footer-copy">© <span id="year">2026</span> [이름]. All rights reserved.</p>
       <nav class="footer-links" aria-label="푸터 링크">
         <a href="#home">맨 위로</a>
-        <a href="https://github.com/yeodh10" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only">(새 탭에서 열림)</span></a>
       </nav>
     </div>
   </footer>

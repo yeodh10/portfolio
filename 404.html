@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — 페이지를 찾을 수 없습니다</title>
+
+  <meta name="description" content="요청하신 페이지를 찾을 수 없습니다." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b0c10" />
+
+  <!-- Dark-tone inline SVG favicon (data URI) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%236c8cff'/%3E%3Cstop%20offset='1'%20stop-color='%2334e0d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%230b0c10'/%3E%3Ctext%20x='16'%20y='22'%20font-family='Pretendard,system-ui,sans-serif'%20font-size='18'%20font-weight='800'%20text-anchor='middle'%20fill='url(%23g)'%3EP%3C/text%3E%3C/svg%3E" />
+
+  <!-- Pretendard webfont -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .not-found-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-7) var(--container-pad);
+      background-color: var(--bg);
+    }
+
+    .not-found-code {
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background-image: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      user-select: none;
+    }
+
+    .not-found-title {
+      margin-top: var(--space-5);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .not-found-desc {
+      margin-top: var(--space-3);
+      font-size: var(--fs-base);
+      color: var(--text-muted);
+      max-width: 36ch;
+      line-height: 1.7;
+    }
+
+    .not-found-action {
+      margin-top: var(--space-7);
+    }
+  </style>
+</head>
+<body>
+  <main class="not-found-wrapper">
+    <p class="not-found-code" aria-label="404">404</p>
+    <h1 class="not-found-title">페이지를 찾을 수 없습니다</h1>
+    <p class="not-found-desc">
+      요청하신 주소가 존재하지 않거나<br />
+      이동되었을 수 있습니다.
+    </p>
+    <div class="not-found-action">
+      <a href="/" class="btn btn-primary">홈으로</a>
+    </div>
+  </main>
+</body>
+</html>

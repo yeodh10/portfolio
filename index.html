@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>풀스택 & AI 에이전트 개발자 포트폴리오</title>
+  <title>여동현 · 풀스택 & AI 에이전트 개발자 포트폴리오</title>
 
-  <!-- TODO: 실제 이름이 정해지면 title/description 앞에 "[이름] · " 형태로 덧붙이고, author 에 이름을 채우세요. (현재는 플레이스홀더 SEO 노출을 막기 위해 이름 없이 직함만 표기) -->
+  <meta name="author" content="여동현" />
   <meta name="description" content="실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 풀스택 & AI 에이전트 개발자의 업무 총괄 포트폴리오입니다. React·Socket.IO·Claude API·Streamlit 등으로 0에서 완성까지 구현합니다." />
   <meta name="theme-color" content="#0b0c10" />
 
@@ -13,9 +13,9 @@
   <!-- URL/이미지는 루트 상대경로(/, /og-image.png)로 둡니다 — 배포 도메인이 바뀌어도 크롤러가 실제 호스트 기준으로 해석하므로 도메인 하드코딩이 필요 없습니다. (절대 URL이 필수인 robots.txt·sitemap.xml 만 도메인을 한 곳에서 관리하세요.) -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
-  <meta property="og:title" content="풀스택 & AI 에이전트 개발자 포트폴리오" />
+  <meta property="og:title" content="여동현 · 풀스택 & AI 에이전트 개발자 포트폴리오" />
   <meta property="og:description" content="실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 개발자의 업무 총괄 포트폴리오." />
-  <meta property="og:site_name" content="풀스택 & AI 에이전트 개발자 포트폴리오" />
+  <meta property="og:site_name" content="여동현 · 풀스택 & AI 에이전트 개발자 포트폴리오" />
   <meta property="og:url" content="/" />
   <link rel="canonical" href="/" />
   <meta property="og:image" content="/og-image.png" />
@@ -23,7 +23,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="풀스택 & AI 에이전트 개발자 포트폴리오 미리보기" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="풀스택 & AI 에이전트 개발자 포트폴리오" />
+  <meta name="twitter:title" content="여동현 · 풀스택 & AI 에이전트 개발자 포트폴리오" />
   <meta name="twitter:description" content="실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 개발자의 업무 총괄 포트폴리오." />
   <meta name="twitter:image" content="/og-image.png" />
 
@@ -41,17 +41,13 @@
   <!-- Design system -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- JSON-LD 구조화 데이터 (schema.org Person) — 비활성화됨.
-       name/jobTitle 이 플레이스홀더([이름]/[직함])라 그대로 노출하면 SEO에 악영향이므로,
-       실제 값이 채워질 때까지 구조화 데이터를 내보내지 않습니다.
-       TODO: 실제 이름·직함·배포 도메인이 정해지면 아래 블록의 주석을 해제하고
-             name/jobTitle/url 의 플레이스홀더를 실제 값으로 교체하세요.
+  <!-- JSON-LD 구조화 데이터 (schema.org Person) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "[이름]",
-    "jobTitle": "[직함] · 풀스택 & AI 에이전트 개발자",
+    "name": "여동현",
+    "jobTitle": "매니저 · 풀스택 & AI 에이전트 개발자",
     "url": "https://yeodh10.github.io/",
     "sameAs": ["https://github.com/yeodh10"],
     "knowsAbout": [
@@ -70,7 +66,6 @@
     "description": "실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 풀스택 & AI 에이전트 개발자입니다."
   }
   </script>
-  -->
   <!-- 비개인 정보 기반 WebSite 구조화 데이터(플레이스홀더 없음) — 안전하게 유지 -->
   <script type="application/ld+json">
   {
@@ -91,7 +86,7 @@
       <!-- TODO: 여기 수정 — 브랜드 이름 교체 -->
       <a class="brand" href="#home">
         <span class="brand-mark" aria-hidden="true">P</span>
-        <span>[이름]</span>
+        <span>여동현</span>
       </a>
 
       <button class="nav-toggle" id="nav-toggle" type="button"
@@ -127,11 +122,11 @@
         <!-- TODO: 여기 수정 — 이름 교체 -->
         <h1 class="hero-title">
           실시간 협업 웹앱부터 AI 영업 에이전트까지 직접 구축하는 개발자,
-          <span class="name">[이름]</span>
+          <span class="name">여동현</span>
         </h1>
 
         <!-- TODO: 여기 수정 — 직함 교체 -->
-        <span class="hero-role">[직함] · 풀스택 &amp; AI 에이전트 개발자</span>
+        <span class="hero-role">매니저 · 풀스택 &amp; AI 에이전트 개발자</span>
 
         <p class="hero-lead">
           WebSocket 기반 실시간 다중 사용자 화이트보드와 공공 입찰 데이터를 분석·분류하는 AI 영업 에이전트를 직접 설계하고 구현했습니다.
@@ -233,7 +228,7 @@
           <div class="about-body">
             <!-- TODO: 여기 수정 — 이름 교체 -->
             <p>
-              [이름]입니다. React와 Socket.IO, Konva, node:sqlite를 활용한 실시간 협업 화이트보드를 처음부터 직접 설계하고 구현했습니다.
+              여동현입니다. React와 Socket.IO, Konva, node:sqlite를 활용한 실시간 협업 화이트보드를 처음부터 직접 설계하고 구현했습니다.
               프론트엔드 UI 구성부터 WebSocket 기반 양방향 통신, 서버 사이드 상태 저장까지 풀스택 전 영역을 단독으로 다뤘습니다.
             </p>
             <p>
@@ -886,7 +881,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <!-- TODO: 여기 수정 — 이름 교체 -->
-      <p class="footer-copy">© <span id="year">2026</span> [이름]. All rights reserved.</p>
+      <p class="footer-copy">© <span id="year">2026</span> 여동현. All rights reserved.</p>
       <nav class="footer-links" aria-label="푸터 링크">
         <a href="#home">맨 위로</a>
         <a href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only">(새 탭에서 열림)</span></a>

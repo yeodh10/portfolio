@@ -61,6 +61,10 @@
       "Streamlit",
       "SQLite",
       "AI 에이전트 설계",
+      "생성형 AI 보안",
+      "프롬프트 인젝션 방어",
+      "위협 인텔리전스",
+      "CVE 취약점 관리",
       "풀스택 웹 개발"
     ],
     "description": "실시간 협업 웹앱과 AI 영업 에이전트를 직접 설계·구현하는 풀스택 & AI 에이전트 개발자입니다."
@@ -140,11 +144,11 @@
 
         <div class="hero-stats stat-row">
           <div class="stat">
-            <span class="stat-num" data-count="6">0</span>
+            <span class="stat-num" data-count="8">0</span>
             <span class="stat-label">대표 프로젝트</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="18000" data-prefix="약 " data-suffix="+">0</span>
+            <span class="stat-num" data-count="20000" data-prefix="약 " data-suffix="+">0</span>
             <span class="stat-label">소스 코드 라인 수</span>
           </div>
           <div class="stat">
@@ -174,21 +178,21 @@
 
         <div class="overview-grid">
           <article class="stat-card reveal delay-1">
-            <span class="stat-num" data-count="6">0</span>
+            <span class="stat-num" data-count="8">0</span>
             <span class="stat-label">대표 프로젝트</span>
             <span class="stat-sub">실시간 협업 · AI 에이전트 · 금융 자동매매 · 프론트엔드 등</span>
           </article>
 
           <article class="stat-card reveal delay-2">
-            <span class="stat-num" data-count="18000" data-prefix="~">0</span>
+            <span class="stat-num" data-count="20000" data-prefix="~">0</span>
             <span class="stat-label">총 코드 라인</span>
-            <span class="stat-sub">JS · Python · Astro 등 6개 프로젝트 합산 (의존성 제외 추정치)</span>
+            <span class="stat-sub">JS · Python · Astro 등 8개 프로젝트 합산 (의존성 제외 추정치)</span>
           </article>
 
           <article class="stat-card reveal delay-3">
-            <span class="stat-num" data-count="5">0</span>
+            <span class="stat-num" data-count="6">0</span>
             <span class="stat-label">핵심 도메인</span>
-            <span class="stat-sub">실시간 협업 · 보안영업 · 금융 자동매매 · AI 챗봇 · 프론트엔드</span>
+            <span class="stat-sub">실시간 협업 · 보안영업 · 생성형 AI 보안 · 금융 자동매매 · AI 챗봇 · 프론트엔드</span>
           </article>
 
           <article class="stat-card reveal delay-4">
@@ -211,6 +215,8 @@
             <li class="tag tag--accent">공공 입찰 데이터 수집 및 자동 분류</li>
             <li class="tag tag--accent">풀스택 개발 (React + Node.js + SQLite)</li>
             <li class="tag tag--accent">Streamlit 대시보드 UI 구축</li>
+            <li class="tag tag--accent">생성형 AI 보안 — 프롬프트 인젝션 다층 방어</li>
+            <li class="tag tag--accent">위협 인텔리전스 — CVE 영업 브리핑</li>
             <li class="tag tag--accent">Phase 기반 점진적 설계·커밋 관리</li>
           </ul>
         </div>
@@ -342,7 +348,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">프로젝트</p>
           <h2 class="section-title">Projects</h2>
-          <p class="section-subtitle">단독으로 설계·구현한 대표 프로젝트 6건입니다.</p>
+          <p class="section-subtitle">단독으로 설계·구현한 대표 프로젝트 8건입니다.</p>
         </div>
 
         <div class="projects-grid">
@@ -480,6 +486,132 @@
                 <span class="badge">적대적 전수조사 보안 강화</span>
               </div>
               <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10" target="_blank" rel="noopener noreferrer">
+                GitHub에서 보기<span class="sr-only">(새 탭에서 열림)</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Project: 프롬프트 인젝션 가드 (생성형 AI 보안) -->
+          <article class="card card--hover project-card reveal">
+            <header class="project-head">
+              <div>
+                <h3 class="project-title">프롬프트 인젝션 가드 — LLM 입력 방어</h3>
+                <p class="project-tagline">LLM에 들어오는 사용자 입력의 프롬프트 인젝션·탈옥 시도를 룰+LLM 다층 방어로 탐지·차단하는 생성형 AI 보안 데모 (SOC 관제 콘솔 UI)</p>
+              </div>
+              <span class="badge">Python · 다층 방어</span>
+            </header>
+
+            <p class="project-overview">
+              "이전 지시 무시", 시스템 프롬프트 탈취, 역할극 탈옥, base64로 숨긴 페이로드 등 <strong>프롬프트 인젝션</strong>을 LLM에 닿기 전에 탐지·차단합니다.
+              핵심은 단일 분류기가 아니라 <strong>다층 방어</strong> — 1차 룰 레이어(시그니처·가중치·인코딩 디코딩, 무료·오프라인)와 2차 LLM 레이어(신종·맥락형 탐지)를 겹치고, 어느 한 겹이라도 강하게 가리키면 승급합니다.
+              보안관제센터(SOC) 콘솔 UI로 입력 속 악성 구간을 인라인 하이라이트하며 실시간 탐지 과정을 보여 줍니다.
+            </p>
+
+            <div class="project-block">
+              <h4>핵심 기능</h4>
+              <ul class="feature-list">
+                <li>1차 룰 레이어 — 한·영 인젝션 시그니처+가중치, base64 디코딩 후 재검사, 제로폭 문자 탐지 (키 없이 동작)</li>
+                <li>2차 LLM 레이어 — 입력을 '데이터'로만 다루는 방어적 프롬프트(분류기 자기방어), JSON 분류</li>
+                <li>결정 레이어 — 두 레이어 결합 → 차단/검토/허용 + 위험도·근거</li>
+                <li>원문 내 악성 구간 인라인 하이라이트(어디가 공격인지 짚어줌) + SIEM 증거 그리드</li>
+                <li>인터셉션 레일(입력→①룰→②LLM→도달/차단) · 라이브 스캔 로그 · 위협 게이지</li>
+                <li>공격/정상 샘플 갤러리 — 룰 레이어만으로 공격 7/7 탐지·오탐 0/3 검증</li>
+              </ul>
+            </div>
+
+            <div class="project-block">
+              <h4>기술 스택</h4>
+              <ul class="tag-list">
+                <li class="tag tag--accent">Python 3.12</li>
+                <li class="tag tag--accent">Anthropic Claude API</li>
+                <li class="tag tag--accent">Streamlit</li>
+                <li class="tag">정규식 시그니처 엔진</li>
+                <li class="tag">생성형 AI 보안</li>
+              </ul>
+            </div>
+
+            <div class="project-block">
+              <h4>역할</h4>
+              <p class="project-overview">개인 프로젝트(보안 포트폴리오 · 생성형 AI 보안)</p>
+            </div>
+
+            <p class="project-highlight">
+              <strong>설계 하이라이트.</strong>
+              LLM 한 겹으로 막으면 분류기 자신이 인젝션당하고 느립니다 — 그래서 <strong>룰(빠르고 무료) + LLM(신종 대응)</strong> 다층 방어로 설계하고, LLM에는 입력을 구분자로 감싼 '데이터'로만 취급하게 했습니다.
+              UI는 멀티에이전트 디자인 워크플로(4방향 병렬 → 심사 → 합성)로 SOC 콘솔을 도출했습니다.
+            </p>
+
+            <footer class="project-foot">
+              <div class="project-badges">
+                <span class="badge">다층 방어(룰+LLM)</span>
+                <span class="badge">분류기 자기방어 프롬프트</span>
+                <span class="badge">악성 구간 인라인 하이라이트</span>
+                <span class="badge">SOC 콘솔 UI</span>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10/prompt-guard" target="_blank" rel="noopener noreferrer">
+                GitHub에서 보기<span class="sr-only">(새 탭에서 열림)</span>
+              </a>
+            </footer>
+          </article>
+
+          <!-- Project: CVE 위협 레이더 (위협 인텔리전스) -->
+          <article class="card card--hover project-card reveal delay-1">
+            <header class="project-head">
+              <div>
+                <h3 class="project-title">CVE 위협 레이더 — 영업용 취약점 브리핑</h3>
+                <p class="project-tagline">최신 보안 취약점(CVE)을 고객사 제품 워치리스트로 필터링해, 의사결정권자용 한국어 브리핑과 영업 토킹포인트를 자동 생성하는 위협 인텔리전스 대시보드</p>
+              </div>
+              <span class="badge">Python · NVD + Claude</span>
+            </header>
+
+            <p class="project-overview">
+              NVD(미국 국가취약점DB) CVE API 2.0로 최신 취약점을 수집한 뒤, <strong>고객사가 실제로 쓰는 제품(방화벽·VPN·WAS·DB 등) 워치리스트</strong>로 영향받는 CVE만 추려냅니다.
+              CVSS 심각도·영향 제품은 NVD 데이터에서 결정론적으로 산출하고, LLM은 "무엇인지·왜 중요한지·권고 조치"를 비전문가용 한국어로 풀어 <strong>영업이 미팅에서 그대로 쓸 한 줄 멘트</strong>까지 생성합니다.
+            </p>
+
+            <div class="project-block">
+              <h4>핵심 기능</h4>
+              <ul class="feature-list">
+                <li>NVD CVE API 2.0 수집 — 날짜 윈도우·페이지네이션·레이트리밋·재시도 처리</li>
+                <li>고객사 제품 워치리스트 필터 — 단어경계 매칭으로 오탐 차단(예: linux ⊂ linuxfoundation)</li>
+                <li>플랫폼 CPE(vulnerable:false) 제외로 제품 오분류 방지</li>
+                <li>심각도·영향제품은 NVD 결정값, LLM은 한국어 브리핑+영업 토킹포인트만 — 비용·정확도 분리</li>
+                <li>스냅샷/라이브 듀얼 모드 — 키 없이도 배포 데모가 즉시 렌더(LLM 호출 캐시)</li>
+                <li>심각도/제품군/검색 필터, 위험도순 정렬, NVD 상세 링크</li>
+              </ul>
+            </div>
+
+            <div class="project-block">
+              <h4>기술 스택</h4>
+              <ul class="tag-list">
+                <li class="tag tag--accent">Python 3.12</li>
+                <li class="tag tag--accent">NVD CVE API 2.0</li>
+                <li class="tag tag--accent">Anthropic Claude API</li>
+                <li class="tag">Streamlit</li>
+                <li class="tag">requests</li>
+                <li class="tag">위협 인텔리전스</li>
+              </ul>
+            </div>
+
+            <div class="project-block">
+              <h4>역할</h4>
+              <p class="project-overview">개인 프로젝트(보안 포트폴리오 · 위협 인텔리전스)</p>
+            </div>
+
+            <p class="project-highlight">
+              <strong>설계 하이라이트.</strong>
+              단순 CVE 피드가 아니라 <strong>"고객사 제품에 영향 가는 것만 골라 영업이 브리핑"</strong>하는 워크플로가 차별점입니다.
+              실데이터 검증으로 오탐 2건(플랫폼 CPE 혼입·부분일치 노이즈)을 발견해 vulnerable 플래그 필터링과 단어경계 매칭으로 정밀도를 높였습니다.
+            </p>
+
+            <footer class="project-foot">
+              <div class="project-badges">
+                <span class="badge">위협 인텔리전스(CVE)</span>
+                <span class="badge">고객사 워치리스트 매칭</span>
+                <span class="badge">NVD 결정값 + LLM 분리</span>
+                <span class="badge">비용 인지 듀얼모드</span>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/yeodh10/cve-radar" target="_blank" rel="noopener noreferrer">
                 GitHub에서 보기<span class="sr-only">(새 탭에서 열림)</span>
               </a>
             </footer>
